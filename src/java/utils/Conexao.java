@@ -1,13 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package utils;
 
-/**
- *
- * @author tiago_grigull
- */
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Conexao {
-    
+	public static Connection conectar() throws ClassNotFoundException {
+		Connection con = null;
+		String url = "jdbc:mysql://localhost:3306/luarti";
+		String user = "root";
+		String password = "";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(url, user, password);
+		} catch (SQLException ex)
+
+		{
+			System.out.println("Erro ao conectar com o banco " + ex);
+
+		}
+		return con;
+
+	}
 }
